@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const TSPComponent = () => {
   const [cities, setCities] = useState([{ x: '', y: '' }]);
+  const [result, setResult] = useState(null);
 
   const handleChange = (index, event) => {
     const values = [...cities];
@@ -25,7 +26,7 @@ const TSPComponent = () => {
     const formattedCities = cities.map(city => [parseFloat(city.x), parseFloat(city.y)]);
     try {
       const response = await axios.post('https://combinatorics-solver.onrender.com/tsp', { cities: formattedCities });
-      console.log('Best Route:', response.data.best_route);
+      setResult(response.data.best_route);
     } catch (error) {
       console.error('Error solving TSP', error);
     }
@@ -55,9 +56,9 @@ const TSPComponent = () => {
       ))}
       <button onClick={handleAddCity}>Add City</button>
       <button onClick={handleSubmit}>Solve TSP</button>
+      {result && <div>Best Route: {result.join(' -> ')}</div>}
     </div>
   );
 };
 
 export default TSPComponent;
-
