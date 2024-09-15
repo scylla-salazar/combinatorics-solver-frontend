@@ -4,84 +4,85 @@
 ##Overview
 This project is a full-stack web application that provides solutions to various combinatorics problems, including:
 
-Traveling Salesman Problem (TSP)
-Knapsack Problem
-Graph Coloring Problem
-Hamiltonian Cycle Problem
-Bin Packing Problem
-Maximum Independent Set Problem
-Partitions
+1. Traveling Salesman Problem (TSP)
+2. Knapsack Problem
+3. Graph Coloring Problem
+4. Hamiltonian Cycle Problem
+5. Bin Packing Problem
+6.Maximum Independent Set Problem
+7.Partitions
+
 The frontend is built with React and deployed on Vercel, while the backend is developed using Flask and deployed on Render. User authentication is handled through Auth0 to ensure secure access.
 
 
-##Table of Contents
+Table of Contents
+1. Architecture
+2. Setup Instructions
+3. Usage Guidelines
+4. API Endpoints
+5. Contributing
+6. License
+
+
 Architecture
+1. Frontend
+i.Technology: React
+ii. Deployment: Vercel
+iii. Key Features: User input forms, result display, integration with the backend via Axios, and user authentication with Auth0.
+
+2. Backend
+i. Technology: Flask
+ii. Deployment: Render
+iii. Key Features: Combinatorics problem-solving algorithms, API endpoints for different problems, and communication with the frontend.
+
+3. Data Flow
+i. User inputs data through the frontend.
+ii. The frontend sends this data to the backend via RESTful API requests.
+iii. The backend processes the data and solves the specified combinatorics problem.
+iv. Results are sent back to the frontend for display.
+
+
 Setup Instructions
-Usage Guidelines
-API Endpoints
-Contributing
-License
+1. Prerequisites
+a. Node.js and npm (for the frontend)
+b. Python 3.x and pip (for the backend)
+c. Git
 
-
-##Architecture
-###Frontend
-Technology: React
-Deployment: Vercel
-Key Features: User input forms, result display, integration with the backend via Axios, and user authentication with Auth0.
-
-###Backend
-Technology: Flask
-Deployment: Render
-Key Features: Combinatorics problem-solving algorithms, API endpoints for different problems, and communication with the frontend.
-
-###Data Flow
-User inputs data through the frontend.
-The frontend sends this data to the backend via RESTful API requests.
-The backend processes the data and solves the specified combinatorics problem.
-Results are sent back to the frontend for display.
-
-
-##Setup Instructions
-###Prerequisites
-Node.js and npm (for the frontend)
-Python 3.x and pip (for the backend)
-Git
-
-###Frontend Setup
-1. Clone the repository:
+2. Frontend Setup
+a. Clone the repository:
 git clone https://github.com/your-username/combinatorics-solver.git
 cd combinatorics-solver/combinatorics-solver-frontend
-2. Install dependencies:
+b. Install dependencies:
 npm install
-3. Create a .env file to include environment variables (e.g., Auth0 keys, API base URL):
+c. Create a .env file to include environment variables (e.g., Auth0 keys, API base URL):
 REACT_APP_AUTH0_DOMAIN=your-auth0-domain
 REACT_APP_AUTH0_CLIENT_ID=your-auth0-client-id
 REACT_APP_API_BASE_URL=https://your-backend-url.com/api
-4. Start the development server:
+d. Start the development server:
 npm start
-5. Visit http://localhost:3000 to view the application.
+e. Visit http://localhost:3000 to view the application.
 
 
-##Backend Setup
-1. Clone the repository (if not already done):
+3.Backend Setup
+a. Clone the repository (if not already done):
 git clone https://github.com/your-username/combinatorics-solver.git
 cd combinatorics-solver/backend
-2. Create and activate a virtual environment:
+b. Create and activate a virtual environment:
 python3 -m venv venv
 source venv/bin/activate
-3. Install dependencies:
+c. Install dependencies:
 pip install -r requirements.txt
-4. Set environment variables in a .env file:
+d. Set environment variables in a .env file:
 FLASK_APP=app.py
 FLASK_ENV=development
 AUTH0_DOMAIN=your-auth0-domain
 AUTH0_API_AUDIENCE=your-api-audience
-5. Start the backend server:
+e. Start the backend server:
 flask run
-6. The backend will be accessible at http://localhost:5000.
+f. The backend will be accessible at http://localhost:5000.
 
 
-##Usage Guidelines
+Usage Guidelines
 1. Authentication: Users must log in via Auth0 to access the application.
 2. Problem Selection: Select a combinatorics problem to solve from the list on the homepage.
 3. Input Data: Enter the required data for the chosen problem.
@@ -89,13 +90,13 @@ flask run
 5. View Results: The results will be displayed on the frontend once processed.
 
 
-##API Endpoints
-###Base URL
+API Endpoints
+1. Base URL
 The base URL for the API is:
 https://combinatorics-solver.onrender.com
 
-###Endpoints
-1. Traveling Salesman Problem (TSP)
+2. Endpoints
+a. Traveling Salesman Problem (TSP)
 URL: /api/tsp
 Method: POST
 Description: Solves the Traveling Salesman Problem. Given a list of cities and the distances between them, find the shortest possible route that visits each city exactly once and returns to the starting city. 
@@ -109,7 +110,7 @@ Response:
   "minimum_distance": total_distance
 }
 
-2. Knapsack Problem
+b. Knapsack Problem
 URL: /api/knapsack
 Method: POST
 Description: Solves the 0/1 Knapsack Problem. Given a set of items, each with a weight and a value, determine the subset of items that has the maximum total value without exceeding a given weight capacity.
@@ -125,7 +126,7 @@ Response:
   "total_value": total_value
 }
 
-3. Graph Coloring Problem
+c. Graph Coloring Problem
 URL: /api/graph-coloring
 Method: POST
 Description: Solves the Graph Coloring Problem. Given a graph, assign a color to each vertex such that no adjacent vertices have the same color. The goal is to use the minimum number of colors.
@@ -139,7 +140,7 @@ Response:
   "number_of_colors": num_colors
 }
 
-4. Hamiltonian Cycle Problem
+d. Hamiltonian Cycle Problem
 URL: /api/hamiltonian-cycle
 Method: POST
 Description: Finds a Hamiltonian cycle in a graph.  Given a graph, find a cycle that visits each vertex exactly once.
@@ -152,7 +153,7 @@ Response:
   "cycle": [vertex1, vertex2, ...]
 }
 
-5. Bin Packing Problem
+e. Bin Packing Problem
 URL: /api/bin-packing
 Method: POST
 Description: Solves the Bin Packing Problem. Given a set of items with different sizes and a set of bins with fixed capacities, determine the minimum number of bins required to pack all the items.
@@ -167,7 +168,7 @@ Response:
   "number_of_bins": num_bins
 }
 
-6. Maximum Independent Set Problem
+f. Maximum Independent Set Problem
 URL: /api/maximum-independent-set
 Method: POST
 Description: Finds the maximum independent set in a graph. Given a graph, find a set of vertices such that no two vertices in the set are adjacent. The goal is to find the largest possible independent set.
@@ -181,7 +182,7 @@ Response:
   "set_size": size
 }
 
-7. Partitions Problem
+g. Partitions Problem
 URL: /api/partitions
 Method: POST
 Description: Finds partitions of a set. A partition of a positive integer n is a way of writing n as a sum of positive integers. For example, the number 5 can be partitioned as 5, 4+1, 3+2, 3+1+1, 2+2+1, 2+1+1+1, or 1+1+1+1+1.
@@ -196,15 +197,14 @@ Response:
 }
 
 
-##Contributing
+Contributing
 If you would like to contribute to this project, please follow these steps:
+1. Fork the repository.
+2. Create a new branch (git checkout -b feature/YourFeature).
+3. Make your changes and commit them (git commit -m 'Add some feature').
+4. Push to the branch (git push origin feature/YourFeature).
+5. Open a pull request.
 
-Fork the repository.
-Create a new branch (git checkout -b feature/YourFeature).
-Make your changes and commit them (git commit -m 'Add some feature').
-Push to the branch (git push origin feature/YourFeature).
-Open a pull request.
 
-
-##License
+License
 This project is licensed under the MIT License. See the LICENSE file for more details.
