@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const KnapsackComponent = () => {
-  const [items, setItems] = useState([{ weight: '', value: '' }]);
-  const [capacity, setCapacity] = useState('');
+    const [items, setItems] = useState([{ weight: '', value: '' }]);
+    const [capacity, setCapacity] = useState('');
+    const [result, setResult] = useState(null);
 
   const handleChange = (index, event) => {
     const values = [...items];
@@ -29,13 +30,13 @@ const KnapsackComponent = () => {
     }));
     try {
       const response = await axios.post('https://combinatorics-solver.onrender.com/knapsack', { items: formattedItems, capacity: parseFloat(capacity) });
-      console.log('Max Value:', response.data.max_value);
+      setResult(response.data.max_value);
     } catch (error) {
       console.error('Error solving Knapsack problem', error);
     }
   };
 
-  return (
+  return (5
     <div>
       <h2>Knapsack Problem</h2>
       {items.map((item, index) => (
@@ -65,6 +66,7 @@ const KnapsackComponent = () => {
         onChange={(event) => setCapacity(event.target.value)}
       />
       <button onClick={handleSubmit}>Solve Knapsack</button>
+	  {result && <div>Max Value: {result}</div>}
     </div>
   );
 };
