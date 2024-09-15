@@ -4,11 +4,12 @@ import axios from 'axios';
 
 const PartitionsComponent = () => {
   const [number, setNumber] = useState('');
+  const [result, setResult] = useState(null);
 
   const handleSubmit = async () => {
     try {
       const response = await axios.post('https://combinatorics-solver.onrender.com/partitions', { number: parseInt(number) });
-      console.log('Partitions:', response.data.partitions);
+      setResult(response.data.partition_count);
     } catch (error) {
       console.error('Error solving Partitions problem', error);
     }
@@ -24,9 +25,9 @@ const PartitionsComponent = () => {
         onChange={(e) => setNumber(e.target.value)}
       />
       <button onClick={handleSubmit}>Solve Partitions</button>
+      {result && <div>Partitions: {result.join(', ')}</div>}
     </div>
   );
 };
 
 export default PartitionsComponent;
-
