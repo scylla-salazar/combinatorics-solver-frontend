@@ -6,6 +6,7 @@ const BinPackingComponent = () => {
   const [items, setItems] = useState([]);
   const [item, setItem] = useState('');
   const [binCapacity, setBinCapacity] = useState('');
+  const [result, setResult] = useState(null);
 
   const handleAddItem = () => {
     setItems([...items, parseFloat(item)]);
@@ -15,7 +16,7 @@ const BinPackingComponent = () => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post('https://combinatorics-solver.onrender.com/bin_packing', { items, bin_capacity: parseFloat(binCapacity) });
-      console.log('Bins:', response.data.bins);
+      setResult(response.data.bins);
     } catch (error) {
       console.error('Error solving Bin Packing problem', error);
     }
@@ -39,9 +40,18 @@ const BinPackingComponent = () => {
       />
       <button onClick={handleSubmit}>Solve Bin Packing</button>
       <pre>{JSON.stringify(items)}</pre>
+      {result && (
+        <div>
+          <h3>Result</h3>
+          {result.map((bin, index) => (
+            <div key={index}>
+              Bin {index + 1}: {bin.join(', ')}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
 export default BinPackingComponent;
-
