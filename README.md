@@ -50,33 +50,33 @@ c. Git
 
 2. Frontend Setup
 a. Clone the repository:
-git clone https://github.com/your-username/combinatorics-solver.git
+git clone https://github.com/your-username/combinatorics-solver.git;
 cd combinatorics-solver/combinatorics-solver-frontend
 b. Install dependencies:
 npm install
-c. Create a .env file to include environment variables (e.g., Auth0 keys, API base URL):
-REACT_APP_AUTH0_DOMAIN=your-auth0-domain
-REACT_APP_AUTH0_CLIENT_ID=your-auth0-client-id
-REACT_APP_API_BASE_URL=https://your-backend-url.com/api
+c. Create a .env file to include environment variables (e.g., Auth0 keys, API base URL):;
+REACT_APP_AUTH0_DOMAIN=your-auth0-domain;
+REACT_APP_AUTH0_CLIENT_ID=your-auth0-client-id;
+REACT_APP_API_BASE_URL=https://your-backend-url.com/api;
 d. Start the development server:
 npm start
 e. Visit http://localhost:3000 to view the application.
 
 
 3.Backend Setup
-a. Clone the repository (if not already done):
-git clone https://github.com/your-username/combinatorics-solver.git
-cd combinatorics-solver/backend
-b. Create and activate a virtual environment:
-python3 -m venv venv
-source venv/bin/activate
+a. Clone the repository (if not already done):;
+git clone https://github.com/your-username/combinatorics-solver.git;
+cd combinatorics-solver/backend;
+b. Create and activate a virtual environment:;
+python3 -m venv venv;
+source venv/bin/activate;
 c. Install dependencies:
-pip install -r requirements.txt
-d. Set environment variables in a .env file:
-FLASK_APP=app.py
-FLASK_ENV=development
-AUTH0_DOMAIN=your-auth0-domain
-AUTH0_API_AUDIENCE=your-api-audience
+pip install -r requirements.txt;
+d. Set environment variables in a .env file:;
+FLASK_APP=app.py;
+FLASK_ENV=development;
+AUTH0_DOMAIN=your-auth0-domain;
+AUTH0_API_AUDIENCE=your-api-audience;
 e. Start the backend server:
 flask run
 f. The backend will be accessible at http://localhost:5000.
@@ -91,35 +91,35 @@ Usage Guidelines
 
 
 API Endpoints
-1. Base URL
+1. Base URL;
 The base URL for the API is:
 https://combinatorics-solver.onrender.com
 
 2. Endpoints
 a. Traveling Salesman Problem (TSP)
-URL: /api/tsp
-Method: POST
+URL: /api/tsp;
+Method: POST;
 Description: Solves the Traveling Salesman Problem. Given a list of cities and the distances between them, find the shortest possible route that visits each city exactly once and returns to the starting city. 
 Request Body:
 {
   "cities": [[x1, y1], [x2, y2], ...]
-}
+};
 Response:
 {
   "optimal_path": [city_index1, city_index2, ...],
   "minimum_distance": total_distance
-}
+};
 
 b. Knapsack Problem
-URL: /api/knapsack
-Method: POST
+URL: /api/knapsack;
+Method: POST;
 Description: Solves the 0/1 Knapsack Problem. Given a set of items, each with a weight and a value, determine the subset of items that has the maximum total value without exceeding a given weight capacity.
 Request Body:
 {
   "weights": [w1, w2, ...],
   "values": [v1, v2, ...],
   "capacity": max_capacity
-}
+};
 Response:
 {
   "selected_items": [item_index1, item_index2, ...],
@@ -127,74 +127,74 @@ Response:
 }
 
 c. Graph Coloring Problem
-URL: /api/graph-coloring
-Method: POST
+URL: /api/graph-coloring;
+Method: POST;
 Description: Solves the Graph Coloring Problem. Given a graph, assign a color to each vertex such that no adjacent vertices have the same color. The goal is to use the minimum number of colors.
 Request Body:
 {
   "adjacency_matrix": [[0, 1, 0], [1, 0, 1], ...]
-}
+};
 Response:
 {
   "coloring": [color1, color2, ...],
   "number_of_colors": num_colors
-}
+};
 
 d. Hamiltonian Cycle Problem
-URL: /api/hamiltonian-cycle
-Method: POST
+URL: /api/hamiltonian-cycle;
+Method: POST;
 Description: Finds a Hamiltonian cycle in a graph.  Given a graph, find a cycle that visits each vertex exactly once.
 Request Body:
 {
   "adjacency_matrix": [[0, 1, 0], [1, 0, 1], ...]
-}
+};
 Response:
 {
   "cycle": [vertex1, vertex2, ...]
-}
+};
 
 e. Bin Packing Problem
-URL: /api/bin-packing
-Method: POST
+URL: /api/bin-packing;
+Method: POST;
 Description: Solves the Bin Packing Problem. Given a set of items with different sizes and a set of bins with fixed capacities, determine the minimum number of bins required to pack all the items.
 Request Body:
 {
   "items": [item1, item2, ...],
   "bin_capacity": capacity
-}
+};
 Response:
 {
   "bins": [[item_index1, item_index2], ...],
   "number_of_bins": num_bins
-}
+};
 
 f. Maximum Independent Set Problem
-URL: /api/maximum-independent-set
-Method: POST
+URL: /api/maximum-independent-set;
+Method: POST;
 Description: Finds the maximum independent set in a graph. Given a graph, find a set of vertices such that no two vertices in the set are adjacent. The goal is to find the largest possible independent set.
 Request Body:
 {
   "adjacency_matrix": [[0, 1, 0], [1, 0, 1], ...]
-}
+};
 Response:
 {
   "independent_set": [vertex1, vertex2, ...],
   "set_size": size
-}
+};
 
 g. Partitions Problem
-URL: /api/partitions
-Method: POST
+URL: /api/partitions;
+Method: POST;
 Description: Finds partitions of a set. A partition of a positive integer n is a way of writing n as a sum of positive integers. For example, the number 5 can be partitioned as 5, 4+1, 3+2, 3+1+1, 2+2+1, 2+1+1+1, or 1+1+1+1+1.
 Request Body:
 {
   "set": [element1, element2, ...],
   "number_of_partitions": n
-}
+};
 Response:
 {
   "partitions": [[subset1], [subset2], ...]
-}
+};
 
 
 Contributing
