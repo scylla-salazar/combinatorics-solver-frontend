@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const KnapsackComponent = () => {
-    const [items, setItems] = useState([{ weight: '', value: '' }]);
-    const [capacity, setCapacity] = useState('');
-    const [result, setResult] = useState(null);
+  const [items, setItems] = useState([{ weight: '', value: '' }]);
+  const [capacity, setCapacity] = useState('');
+  const [result, setResult] = useState(null);
 
   const handleChange = (index, event) => {
     const values = [...items];
@@ -66,7 +66,7 @@ const KnapsackComponent = () => {
         onChange={(event) => setCapacity(event.target.value)}
       />
       <button onClick={handleSubmit}>Solve Knapsack</button>
-	  {result && <div>Max Value: {result}</div>}
+	{result && <div>Max Value: {result}</div>}
     </div>
   );
 };
