@@ -26,17 +26,20 @@ const KnapsackComponent = () => {
   const handleSubmit = async () => {
     const formattedItems = items.map(item => ({
       weight: parseFloat(item.weight),
-      value: parseFloat(item.value)
+      value: parseFloat(item.value),
     }));
     try {
-      const response = await axios.post('https://combinatorics-solver.onrender.com/knapsack', { items: formattedItems, capacity: parseFloat(capacity) });
+      const response = await axios.post('https://combinatorics-solver.onrender.com/knapsack', { 
+        items: formattedItems, 
+        capacity: parseFloat(capacity) 
+      });
       setResult(response.data.max_value);
     } catch (error) {
       console.error('Error solving Knapsack problem', error);
     }
   };
 
-  return (5
+  return (
     <div>
       <h2>Knapsack Problem</h2>
       {items.map((item, index) => (
@@ -66,10 +69,9 @@ const KnapsackComponent = () => {
         onChange={(event) => setCapacity(event.target.value)}
       />
       <button onClick={handleSubmit}>Solve Knapsack</button>
-	{result && <div>Max Value: {result}</div>}
+      {result && <div>Max Value: {result}</div>}
     </div>
   );
 };
 
 export default KnapsackComponent;
-
