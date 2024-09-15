@@ -25,7 +25,7 @@ const PartitionsComponent = () => {
         onChange={(e) => setNumber(e.target.value)}
       />
       <button onClick={handleSubmit}>Solve Partitions</button>
-      {result && <div>Partitions: {result.join(', ')}</div>}
+      {result && <div>No of Partitions: {result.join(', ')}</div>}
     </div>
   );
 };
