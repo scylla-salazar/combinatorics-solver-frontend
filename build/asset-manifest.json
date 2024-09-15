@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/combinatorics-solver/static/css/main.e6c13ad2.css",
+    "main.js": "/combinatorics-solver/static/js/main.46dfc886.js",
+    "static/js/453.26021eec.chunk.js": "/combinatorics-solver/static/js/453.26021eec.chunk.js",
+    "index.html": "/combinatorics-solver/index.html",
+    "main.e6c13ad2.css.map": "/combinatorics-solver/static/css/main.e6c13ad2.css.map",
+    "main.46dfc886.js.map": "/combinatorics-solver/static/js/main.46dfc886.js.map",
+    "453.26021eec.chunk.js.map": "/combinatorics-solver/static/js/453.26021eec.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.46dfc886.js"
+  ]
+}
