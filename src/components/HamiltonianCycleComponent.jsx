@@ -4,6 +4,7 @@ import axios from 'axios';
 
 const HamiltonianCycleComponent = () => {
   const [matrix, setMatrix] = useState([[0, 1, 0], [1, 0, 1], [0, 1, 0]]);
+  const [result, setResult] = useState(null);
 
   const handleChange = (rowIndex, colIndex, value) => {
     const newMatrix = [...matrix];
@@ -14,7 +15,7 @@ const HamiltonianCycleComponent = () => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post('https://combinatorics-solver.onrender.com/hamiltonian_cycle', { graph: matrix });
-      console.log('Cycle:', response.data.cycle);
+      setResult(response.data.cycle);
     } catch (error) {
       console.error('Error solving Hamiltonian Cycle problem', error);
     }
@@ -36,9 +37,9 @@ const HamiltonianCycleComponent = () => {
         </div>
       ))}
       <button onClick={handleSubmit}>Solve Hamiltonian Cycle</button>
+      {result && <div>Cycle: {result.join(' -> ')}</div>}
     </div>
   );
 };
 
 export default HamiltonianCycleComponent;
-
