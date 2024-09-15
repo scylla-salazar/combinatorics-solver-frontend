@@ -6,6 +6,7 @@ const GraphColoringComponent = () => {
   const [graph, setGraph] = useState({ A: ['B', 'C'], B: ['A'], C: ['A'] });
   const [node, setNode] = useState('');
   const [neighbors, setNeighbors] = useState('');
+  const [result, setResult] = useState(null);
 
   const handleAddNode = () => {
     setGraph({ ...graph, [node]: neighbors.split(',').map(n => n.trim()) });
@@ -16,7 +17,7 @@ const GraphColoringComponent = () => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post('https://combinatorics-solver.onrender.com/graph_coloring', { graph });
-      console.log('Color Assignment:', response.data.color_assignment);
+      setResult(response.data.color_assignment);
     } catch (error) {
       console.error('Error solving Graph Coloring problem', error);
     }
@@ -40,9 +41,18 @@ const GraphColoringComponent = () => {
       <button onClick={handleAddNode}>Add Node</button>
       <pre>{JSON.stringify(graph, null, 2)}</pre>
       <button onClick={handleSubmit}>Solve Graph Coloring</button>
+      {result && (
+        <div>
+          <h3>Color Assignment</h3>
+          {Object.entries(result).map(([node, color], index) => (
+            <div key={index}>
+              {node}: {color}
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
 export default GraphColoringComponent;
-
